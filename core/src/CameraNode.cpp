@@ -10,18 +10,20 @@ CameraNode::CameraNode(float fov, float aspect, float nearplane, float farplane)
 	SetProjectionParameters(fov, aspect, nearplane, farplane);
 }
 
+CameraNode::CameraNode(const glm::vec4& parameters)
+{
+	SetProjectionParameters(parameters);
+}
 
 void CameraNode::Update(float frametime)
 {
 	Node::Update(frametime);
 }
 
-
 void CameraNode::Render(IRenderer& renderer, GLuint program)
 {
 	Node::Render(renderer, program);
 }
-
 
 void CameraNode::SetProjectionParameters(float fov, float aspect, float nearplane, float farplane)
 {
@@ -33,7 +35,6 @@ void CameraNode::SetProjectionParameters(float fov, float aspect, float nearplan
 	m_fNearplane = nearplane;
 	m_fFarplane = farplane;
 }
-
 
 glm::vec4 CameraNode::GetProjectionParameters() const
 {
