@@ -1,6 +1,6 @@
 #include "../include/Timer.h"
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #endif
@@ -17,7 +17,7 @@ Timer::Timer() :
 	m_uStartClock(0),
 	m_fElapsedSeconds(0.0f)
 {
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	uint64_t rate;
 	// Get frequency of CPU ticks (ticks/second)
 	::QueryPerformanceFrequency((LARGE_INTEGER*)&rate);
@@ -59,7 +59,7 @@ uint64_t Timer::GetTicks()
 {
 	uint64_t ret = 0;
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	// Get the amount of CPU ticks
 	::QueryPerformanceCounter((LARGE_INTEGER*)&ret);
 

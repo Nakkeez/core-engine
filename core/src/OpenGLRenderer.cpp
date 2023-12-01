@@ -73,7 +73,7 @@ PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus = nullptr;
 PFNGLCLEARDEPTHFPROC glClearDepthf = nullptr;
 PFNGLGENERATEMIPMAPPROC glGenerateMipmap = nullptr;
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 #include "../include/GL/wglext.h"
 PFNGLBLENDEQUATIONPROC glBlendEquation = nullptr;
 PFNGLACTIVETEXTUREPROC glActiveTexture = nullptr;
@@ -156,7 +156,7 @@ bool OpenGLRenderer::Create()
 {
 	const int32_t multisampleCount = 8;
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	// Create dummy window for initializing the wgl functions for pixel format
 	MSG msg = { 0 };
 	WNDCLASS wc = { 0 };
@@ -321,7 +321,7 @@ void OpenGLRenderer::Flip()
 {
 	glFlush(); // Finalize all commands in the driver
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	SwapBuffers(m_Context); // Transfer graphics to the screen
 #endif
 
@@ -571,7 +571,7 @@ void OpenGLRenderer::PrintProgramError(GLuint program)
 
 bool OpenGLRenderer::InitFunctions()
 {
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 #define GL_GETPROCADDRESS wglGetProcAddress
 #define GL_GETPROCADDRESS_PARAM_TYPE const char*
 #endif
@@ -580,7 +580,7 @@ bool OpenGLRenderer::InitFunctions()
 #define GL_GETPROCADDRESS_PARAM_TYPE const GLubyte*
 #endif
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	glBlendEquation = (PFNGLBLENDEQUATIONPROC)GL_GETPROCADDRESS((GL_GETPROCADDRESS_PARAM_TYPE)"glBlendEquation");
 	glActiveTexture = (PFNGLACTIVETEXTUREPROC)GL_GETPROCADDRESS((GL_GETPROCADDRESS_PARAM_TYPE)"glActiveTexture");
 	glCompressedTexImage2D = (PFNGLCOMPRESSEDTEXIMAGE2D)GL_GETPROCADDRESS((GL_GETPROCADDRESS_PARAM_TYPE)"glCompressedTexImage2D");

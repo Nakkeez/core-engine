@@ -1,6 +1,6 @@
 #pragma once
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 // Include minimum set of win32 stuff
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -25,7 +25,7 @@
 #include "IRenderer.h"
 
 // Define some common keycodes
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 #define KEY_ESC		VK_ESCAPE
 #define KEY_LEFT	VK_LEFT
 #define KEY_RIGHT	VK_RIGHT
@@ -155,7 +155,7 @@ public:
 	 * Get window handle
 	 * @return window handle
 	 */
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	inline HWND GetWindow() { return m_Window; }
 #endif
 #if defined (_LINUX)
@@ -216,7 +216,7 @@ protected:
 	 */
 	virtual bool OnKeyDown(uint32_t keyCode) { return false; }
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	/**
 	 * Allow capturing all win32 events before they are handled by default handler.
 	 * @param message message id
@@ -228,7 +228,7 @@ protected:
 #endif
 
 private:
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	static HWND MakeWindow(int32_t width, int32_t height, const std::string& title);
 	static long WINAPI WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 

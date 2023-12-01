@@ -4,7 +4,7 @@
 #include "IApplication.h"
 
 #include <GL/gl.h>
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 #include "./GL/glext.h"
 #endif
 #include "./GL/myGL.h" // Declare newer OpenGL functions
@@ -173,7 +173,7 @@ private:
 	*/
 	bool SetDefaultSettings();
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 	HDC				m_Context; // Handle to the device context (screen)
 	HGLRC			m_hRC; // Handle to OpenGL resource context
 #endif

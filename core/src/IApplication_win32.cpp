@@ -3,7 +3,7 @@
 // Include all your renderers
 #include "../include/OpenGLRenderer.h"
 
-#if defined (_WINDOWS)
+#if defined (_WIN32)
 
 // Declare static member variable outside of the class members
 IApplication* IApplication::m_pApp = nullptr;
